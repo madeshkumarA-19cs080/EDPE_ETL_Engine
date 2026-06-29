@@ -16,5 +16,8 @@ build/
 logs/
 output/
 
+# Local drivers and JDBC jars
+drivers/
+
 # Environment
 .env
