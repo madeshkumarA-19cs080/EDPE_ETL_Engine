@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDPE | Result</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <div class="page-shell">
+        <header>
+            <h1>ETL Result</h1>
+            <p>Summary of the current ETL execution.</p>
+        </header>
+
+        <main>
+            <section class="card report-card">
+                <h2>Execution Summary</h2>
+                <div class="summary-grid">
+                    <div><strong>Connection Status</strong><span>{{ connection_status }}</span></div>
+                    <div><strong>Total Records Read</strong><span>{{ total_records }}</span></div>
+                    <div><strong>Valid Records</strong><span>{{ valid_records }}</span></div>
+                    <div><strong>Invalid Records</strong><span>{{ invalid_records }}</span></div>
+                    <div><strong>Duplicates Removed</strong><span>{{ duplicates_removed }}</span></div>
+                    <div><strong>Execution Time</strong><span>{{ execution_time }}</span></div>
+                    <div><strong>Memory Used</strong><span>{{ memory_used }}</span></div>
+                    <div><strong>Output Format</strong><span>{{ output_format }}</span></div>
+                    <div><strong>Output Folder</strong><span>{{ output_folder }}</span></div>
+                    <div><strong>Job Status</strong><span>{{ job_status }}</span></div>
+                </div>
+
+                <div class="downloads">
+                    {% if error_report %}
+                        <a href="/download_report?name={{ error_report }}" class="button">Download Error Report</a>
+                    {% endif %}
+                    {% if execution_report %}
+                        <a href="/download_report?name={{ execution_report }}" class="button">Download Execution Report</a>
+                    {% endif %}
+                </div>
+
+                {% if warning_message %}
+                <div class="warning-message">{{ warning_message }}</div>
+                {% endif %}
+
+                <div class="button-row">
+                    <a href="/" class="button secondary">Back to Connection</a>
+                    <a href="/logs" class="button secondary">View Logs</a>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

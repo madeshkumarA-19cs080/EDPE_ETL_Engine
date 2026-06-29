@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDPE | Logs</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <div class="page-shell">
+        <header>
+            <h1>EDPE Logs</h1>
+            <p>Live execution logs with automatic refresh.</p>
+        </header>
+
+        <main>
+            <section class="card logs-card">
+                <pre id="log-output">Loading logs...</pre>
+                <div class="button-row">
+                    <a href="/" class="button secondary">Connection Page</a>
+                    <button id="refresh-logs" class="button">Refresh</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

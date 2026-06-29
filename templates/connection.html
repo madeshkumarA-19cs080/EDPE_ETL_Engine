@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDPE | Connection</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <div class="page-shell">
+        <header>
+            <h1>Enterprise Data Processing Engine</h1>
+            <p>Connect to a database and run a local ETL process.</p>
+        </header>
+
+        <main>
+            <section class="card form-card">
+                <h2>Connection Settings</h2>
+                <form id="connection-form" method="post" action="/run_etl">
+                    <label>
+                        Database Type
+                        <select name="database_type" required>
+                            {% for key, label in database_types.items() %}
+                                <option value="{{ key }}">{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+
+                    <label>
+                        Host
+                        <input type="text" name="host" value="localhost" required />
+                    </label>
+
+                    <label>
+                        Port
+                        <input type="number" name="port" value="1433" required />
+                    </label>
+
+                    <label>
+                        Database
+                        <input type="text" name="database" placeholder="Database name" required />
+                    </label>
+
+                    <label>
+                        Username
+                        <input type="text" name="username" placeholder="User" required />
+                    </label>
+
+                    <label>
+                        Password
+                        <input type="password" name="password" placeholder="Password" required />
+                    </label>
+
+                    <label>
+                        Table Name
+                        <input type="text" name="table_name" placeholder="Schema.Table or table name" required />
+                    </label>
+
+                    <label>
+                        Output Format
+                        <select name="output_format" required>
+                            {% for format in output_formats %}
+                                <option value="{{ format }}">{{ format | upper }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+
+                    <label>
+                        Partition By (optional)
+                        <input type="text" name="partition_by" placeholder="Partition field for output" />
+                    </label>
+
+                    <div class="button-row">
+                        <button type="button" id="test-connection">Test Connection</button>
+                        <button type="submit">Run ETL</button>
+                        <button type="button" id="reset-form">Reset</button>
+                    </div>
+
+                    {% if driver_warning %}
+                    <div class="warning-message">{{ driver_warning }}</div>
+                    {% endif %}
+
+                    <div id="connection-status" class="status-message"></div>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <a href="/logs">View Logs</a>
+        </footer>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

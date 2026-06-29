@@ -1,0 +1,8 @@
+Connection Status: Success
+Table: banking.transactions
+Total Records Read: 10
+Valid Records: 10
+Invalid Records: 0
+Duplicates Removed: 0
+Output Format: PARQUET
+Output Folder: C:\EnterpriseDataProcessingEngine\output\edpe_banking_transactions_parquet
