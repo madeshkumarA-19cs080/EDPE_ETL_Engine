@@ -1,0 +1,15 @@
+# Ignore local virtual env
+.venv
+
+# Ignore logs and output data
+logs/
+output/
+
+# Ignore local dev files
+.vscode/
+__pycache__/
+
+# Ignore large or sensitive files
+drivers/
+*.csv
+*.db

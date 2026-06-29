@@ -74,3 +74,17 @@ http://localhost:5000
 
 - No Docker, AWS, Kubernetes, or authentication is included.
 - The application is designed to be extended with new connector types in the future.
+
+## Deployment (Vercel)
+
+1. Remove local virtual environment and ensure it's ignored: `python -m venv .venv` then delete `.venv/` and add it to `.gitignore`.
+2. Ensure `requirements.txt` lists all dependencies (already present).
+3. Add a minimal Vercel configuration (`vercel.json`) and an API wrapper in `api/app.py` so Vercel can detect the Flask app.
+4. Use the Vercel CLI to deploy:
+
+```powershell
+vercel login
+vercel --prod
+```
+
+Notes: Vercel serverless functions have a 50MB compressed upload limit. Keep large data, drivers, and logs out of the deployment bundle by listing them in `.vercelignore`.
